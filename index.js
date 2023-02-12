@@ -1,9 +1,9 @@
 const express = require("express");
 const app = express();
-const PORT = 8080;
 const mongoose = require("mongoose");
+const dotenv = require("dotenv").config();
 const db = require("./config/db");
-
+const PORT = process.env.PORT || 8080;
 //ALL ROUTES
 //ALL LOGIC
 
