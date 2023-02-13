@@ -2,6 +2,7 @@ const router = require("express").Router();
 const mongoose = require("mongoose");
 const User = require("../models/User");
 const CryptoJS = require("crypto-js"); //Password encryption
+const jwt = require("jsonwebtoken");
 
 // REGISTER USER
 router.post("/register", async (req, res) => {
@@ -38,6 +39,15 @@ router.post("/login", async (req, res) => {
   if (pwd !== req.body.password) {
     return res.status(401).json("Wrong Credentials");
   }
+
+  const accessToken = jwt.sign(
+    {
+      id: user._id,
+      isAdmin: user.isAdmin,
+    },
+    process.env.JWT_SECRET,
+    { expiresIn: "3d" }
+  );
 
   const { password, ...others } = user._doc; //Destructuring the user info, then sending all but password to be visible in the json display
   res.status(200).json(others);
