@@ -32,7 +32,7 @@ router.post("/login", async (req, res) => {
   const hashedPwd = CryptoJS.AES.decrypt(
     user.password,
     process.env.PASS_SECRET
-  );
+  ); //CryptoJS decrypt
 
   const pwd = hashedPwd.toString(CryptoJS.enc.Utf8);
   console.log(pwd);
