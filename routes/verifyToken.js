@@ -12,4 +12,12 @@ const verifyToken = (req, res, next) => {
   }
 };
 
+const verifyTokenAndAuthenticate = (req, res, next) => {
+  if (req.user.id === req.params.id || req.user.isAdmin) {
+    next();
+  } else {
+    res.status(401).json("You are not Allowed to do that");
+  }
+};
+
 module.exports = verifyToken;

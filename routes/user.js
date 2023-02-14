@@ -1,6 +1,7 @@
 const router = require("express").Router();
+const verifyToken = require("./verifyToken");
 
-router.put("/:id");
+router.put("/:id", verifyToken, (req, res) => {});
 
 // router.get("/usertest", (req, res) => {
 //   res.send(`User route is being accesesed`);
