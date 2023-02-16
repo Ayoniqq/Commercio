@@ -23,7 +23,7 @@ router.put("/:id", verifyTokenAndAuthorization, async (req, res) => {
   }
 });
 
-// TESTER ROUTES
+// TESTING ROUTES
 // router.get("/usertest", (req, res) => {
 //   res.send(`User route is being accesesed`);
 // });
