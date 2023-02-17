@@ -2,7 +2,7 @@ const router = require("express").Router();
 const mongoose = require("mongoose");
 const User = require("../models/User");
 const CryptoJS = require("crypto-js"); //Password encryption
-const jwt = require("jsonwebtoken"); //json web security
+const jwt = require("jsonwebtoken"); //Json web security
 
 // REGISTER USER
 router.post("/register", async (req, res) => {
