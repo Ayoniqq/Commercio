@@ -5,7 +5,7 @@ const { verifyToken, verifyTokenAndAuthorization } = require("./verifyToken");
 router.put("/:id", verifyTokenAndAuthorization, async (req, res) => {
   if (req.body.password) {
     req.body.password = CryptoJS.AES.encrypt(
-      req.body.password,
+      req.body.password, // PASSWORD ENCRYPT
       process.env.PASS_SECRET
     ).toString();
   }
