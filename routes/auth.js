@@ -19,7 +19,7 @@ router.post("/register", async (req, res) => {
     const savedUser = await newUser.save(); //Save User Info to the DB
     res.status(200).json(savedUser); //Display Saved user as JSON
   } catch (err) {
-    res.status(500).json(err); //Display Error
+    res.status(500).json(err); //Display Error Message
   }
 });
 
