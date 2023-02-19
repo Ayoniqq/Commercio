@@ -50,7 +50,7 @@ router.post("/login", async (req, res) => {
     { expiresIn: "3d" }
   );
 
-  const { password, ...others } = user._doc; //Destructuring the user info, then sending all but password to be visible in the json display
+  const { password, ...others } = user._doc; //Destructuring the user info, then sending all but the password to be visible in the json display
   res.status(200).json({ others, accessToken }); //Display others alongside the access token
 });
 
