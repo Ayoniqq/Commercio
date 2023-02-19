@@ -22,11 +22,15 @@ const verifyTokenAndAuthorization = (req, res, next) => {
 };
 
 const verifyTokenAndAdmin = (req, res, next) => {
-  if (req.user.id === req.params.id || req.user.isAdmin) {
+  if (req.user.isAdmin) {
     next();
   } else {
     res.status(401).json("Unauthorized access");
   }
 };
 
-module.exports = { verifyToken, verifyTokenAndAuthorization };
+module.exports = {
+  verifyToken,
+  verifyTokenAndAuthorization,
+  verifyTokenAndAdmin,
+};
