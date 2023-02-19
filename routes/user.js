@@ -1,4 +1,5 @@
 const router = require("express").Router();
+const User = require("../models/User");
 const { verifyToken, verifyTokenAndAuthorization } = require("./verifyToken");
 
 //UPDATE USER INFO
@@ -22,6 +23,13 @@ router.put("/:id", verifyTokenAndAuthorization, async (req, res) => {
     res.status(500).json(err);
   }
 });
+
+router.delete("/:id", verifyTokenAndAuthorization, async (req,res)=>{
+  try{
+    await User.findByIdAndDelete(req.params.id);
+    res.status(200).json("User has been deleted");
+  }
+})
 
 // TESTING ROUTES
 // router.get("/usertest", (req, res) => {
