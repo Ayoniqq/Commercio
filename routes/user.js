@@ -51,7 +51,7 @@ router.get("/find/:id", verifyTokenAndAdmin, async (req, res) => {
 
 // TESTING ROUTES
 router.get("/usertest", (req, res) => {
-  res.send(`User route is being accesesed`);
+  res.send(`User route is being accessed`);
 });
 
 router.post("/userposttest", (req, res) => {
