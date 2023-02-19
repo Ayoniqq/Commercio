@@ -37,7 +37,7 @@ router.post("/login", async (req, res) => {
   const pwd = hashedPwd.toString(CryptoJS.enc.Utf8);
   console.log(pwd);
   if (pwd !== req.body.password) {
-    return res.status(401).json("Wrong Credentials"); //
+    return res.status(401).json("Wrong Credentials");
   }
 
   //JSON WEB TOKEN
