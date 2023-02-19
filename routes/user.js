@@ -24,12 +24,14 @@ router.put("/:id", verifyTokenAndAuthorization, async (req, res) => {
   }
 });
 
-router.delete("/:id", verifyTokenAndAuthorization, async (req,res)=>{
-  try{
+router.delete("/:id", verifyTokenAndAuthorization, async (req, res) => {
+  try {
     await User.findByIdAndDelete(req.params.id);
     res.status(200).json("User has been deleted");
+  } catch (err) {
+    res.status(400).json(err);
   }
-})
+});
 
 // TESTING ROUTES
 // router.get("/usertest", (req, res) => {
