@@ -19,7 +19,7 @@ router.post("/register", async (req, res) => {
     const savedUser = await newUser.save(); //Save User Info to the DB
     res.status(200).json(savedUser); //Display Saved user as JSON
   } catch (err) {
-    res.status(500).json(err); //Display Error Message
+    res.status(500).json(err); //Display Error Messages
   }
 });
 
@@ -35,7 +35,7 @@ router.post("/login", async (req, res) => {
   ); //CryptoJS decrypt
 
   const pwd = hashedPwd.toString(CryptoJS.enc.Utf8);
-  console.log(pwd);
+  console.log(pwd); //Display Password
   if (pwd !== req.body.password) {
     return res.status(401).json("Wrong Credentials");
   }
