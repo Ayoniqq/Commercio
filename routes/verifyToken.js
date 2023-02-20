@@ -23,6 +23,7 @@ const verifyTokenAndAuthorization = (req, res, next) => {
   }
 };
 
+//Verify token and check if admin
 const verifyTokenAndAdmin = (req, res, next) => {
   if (req.user.isAdmin) {
     next();
