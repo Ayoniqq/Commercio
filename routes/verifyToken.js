@@ -2,7 +2,8 @@ const jwt = require("jsonwebtoken");
 
 //Verify webtoken
 const verifyToken = (req, res, next) => {
-  const authHeader = req.header.token;
+  const authHeader = req.headers.token;
+  //console.log(authHeader);
   if (authHeader) {
     const token = authHeader.split(" ")[1];
     jwt.verify(token, process.env.JWT_SECRET, (err, user) => {
@@ -28,11 +29,15 @@ const verifyTokenAndAuthorization = (req, res, next) => {
 
 //Verify token and check if admin
 const verifyTokenAndAdmin = (req, res, next) => {
-  if (req.user.isAdmin) {
-    next();
-  } else {
-    res.status(401).json("Unauthorized access");
-  }
+  // if (req.user.isAdmin) {
+  verifyToken(req, res, () => {
+    if (req.user.isAdmin === true) {
+      console.log("YESSSSSS");
+      next();
+    } else {
+      res.status(401).json("Unauthorized access");
+    }
+  });
 };
 
 module.exports = {

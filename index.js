@@ -9,7 +9,7 @@ const authRoute = require("./routes/auth");
 
 app.use(express.json());
 app.use("/api/auth", authRoute); //authRoute
-app.use("/api/user", userRoute); //Default route & userRoute from user.js
+app.use("/api/users", userRoute); //Default route & userRoute from user.js
 
 app.listen(PORT, () => {
   console.log(`LISTENING ON PORT: ${PORT}`);

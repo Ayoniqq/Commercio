@@ -1,4 +1,5 @@
 const router = require("express").Router();
+const CryptoJS = require("crypto-js"); //Password encryption
 const User = require("../models/User");
 const {
   verifyToken,
@@ -22,6 +23,7 @@ router.put("/:id", verifyTokenAndAuthorization, async (req, res) => {
       { $set: req.body },
       { new: true }
     );
+    updatedUser.save();
     res.status(200).json(updatedUser);
   } catch (err) {
     res.status(500).json(err);
