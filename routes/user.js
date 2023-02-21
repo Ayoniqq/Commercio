@@ -67,7 +67,7 @@ router.get("/", verifyTokenAndAdmin, async (req, res) => {
 //GET USER STATS (Statistics showing when users visited the platform)
 router.get("/stats", verifyTokenAndAdmin, async (req, res) => {
   const date = new Date();
-  const lastYear = new Date(setFullYear) = new Date(getFullYear - 1);
+  const lastYear = new Date(date.setFullYear(date.getFullYear() - 1)); //Last year data
   try {
     //Catch
   } catch (err) {
