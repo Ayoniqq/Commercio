@@ -40,7 +40,7 @@ router.delete("/:id", verifyTokenAndAuthorization, async (req, res) => {
   }
 });
 
-//GET User
+//GET ONE User
 router.get("/find/:id", verifyTokenAndAdmin, async (req, res) => {
   try {
     const user = await User.findById(req.params.id);
@@ -50,6 +50,8 @@ router.get("/find/:id", verifyTokenAndAdmin, async (req, res) => {
     res.status(500).json(err);
   }
 });
+
+
 
 // --------------------------------------------------
 // TESTING ROUTES
