@@ -69,6 +69,7 @@ router.get("/stats", verifyTokenAndAdmin, async (req, res) => {
   const date = new Date();
   const lastYear = new Date(date.setFullYear(date.getFullYear() - 1)); //Last year data
   try {
+    //Getting the month and the number of users that visited
     const data = await User.aggregate([
       { $match: { createdAt: { $gte: lastYear } } },
       {
@@ -77,9 +78,13 @@ router.get("/stats", verifyTokenAndAdmin, async (req, res) => {
         },
       },
       {
-        $group:
-      }
+        $group: {
+          _id: "$month",
+          total: { $sum: 1 },
+        },
+      },
     ]);
+    res.status(200).json(data);
   } catch (err) {
     res.status(500).json(err);
   }
