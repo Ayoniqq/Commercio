@@ -56,7 +56,7 @@ router.get("/", verifyTokenAndAdmin, async (req, res) => {
   const query = req.query.new;
   try {
     const users = query
-      ? await User.find().sort({ _id: -1 }).limit(2) //returns the latest user(s) if query is true
+      ? await User.find().sort({ _id: -1 }).limit(3) //returns the latest user(s) if query is true
       : await User.find(); //returns all users if query is false
     res.status(200).json(users);
   } catch (err) {
