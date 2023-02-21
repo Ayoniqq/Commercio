@@ -51,7 +51,16 @@ router.get("/find/:id", verifyTokenAndAdmin, async (req, res) => {
   }
 });
 
-
+//GET ALL Users
+router.get("/", verifyTokenAndAdmin, async (req, res) => {
+  try {
+    const users = await User.find();
+    const { password, ...others } = user._doc;
+    res.status(200).json(others);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 
 // --------------------------------------------------
 // TESTING ROUTES
