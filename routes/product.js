@@ -49,26 +49,23 @@ router.delete("/:id", verifyTokenAndAuthorization, async (req, res) => {
 router.get("/find/:id", async (req, res) => {
   //We omitted verifyTokenAndAdmin here because everyboy should be allowed to view products
   try {
-    const user = await User.findById(req.params.id);
-    const { password, ...others } = user._doc;
-    res.status(200).json(others);
+    const product = await Product.findById(req.params.id);
+    res.status(200).json(product);
   } catch (err) {
     res.status(500).json(err);
   }
 });
 
-// //GET ALL Users
-// router.get("/", verifyTokenAndAdmin, async (req, res) => {
-//   const query = req.query.new;
-//   try {
-//     const users = query
-//       ? await User.find().sort({ _id: -1 }).limit(3) //returns the latest user(s) if query is true
-//       : await User.find(); //returns all users if query is false
-//     res.status(200).json(users);
-//   } catch (err) {
-//     res.status(500).json(err);
-//   }
-// });
+// //GET ALL Products
+router.get("/", verifyTokenAndAdmin, async (req, res) => {
+  const qNew = req.query.new;
+  const qCategory = req.query.category;
+  try {
+    res.status(200).json(users);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 
 // //GET USER STATS (Statistics showing when users visited the platform)
 // router.get("/stats", verifyTokenAndAdmin, async (req, res) => {
