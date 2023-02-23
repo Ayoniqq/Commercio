@@ -58,14 +58,14 @@ router.get("/find/:id", async (req, res) => {
 
 // //GET ALL Products
 router.get("/", verifyTokenAndAdmin, async (req, res) => {
-  const qNew = req.query.new;
-  const qCategory = req.query.category;
+  const qNew = req.query.new; //New Query
+  const qCategory = req.query.category; //
   try {
     if (qNew) {
       const products = await Product.find();
       res.status(200).json(products);
     }
-    elseif(qCategory){
+    elseif(qCategory) {
       const product = await Product.find({});
     }
     res.status(200).json(users);
