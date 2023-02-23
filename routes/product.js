@@ -61,9 +61,12 @@ router.get("/", verifyTokenAndAdmin, async (req, res) => {
   const qNew = req.query.new;
   const qCategory = req.query.category;
   try {
-    if(qNew){
+    if (qNew) {
       const products = await Product.find();
-      res.status(200).json(products)
+      res.status(200).json(products);
+    }
+    elseif(qCategory){
+      const 
     }
     res.status(200).json(users);
   } catch (err) {
