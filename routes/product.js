@@ -66,7 +66,7 @@ router.get("/", verifyTokenAndAdmin, async (req, res) => {
       res.status(200).json(products);
     }
     elseif(qCategory){
-      const 
+      const product = await Product.find({});
     }
     res.status(200).json(users);
   } catch (err) {
