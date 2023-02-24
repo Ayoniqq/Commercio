@@ -64,7 +64,7 @@ router.get("/", verifyTokenAndAdmin, async (req, res) => {
     console.log("FETCHING");
     if (qNew) {
       console.log("NEW");
-      products = await Product.find().sort({ createdAt: -1 }).limit(2); //fetch most recent products
+      products = await Product.find().sort({ createdAt: -1 }).limit(2); //fetch most recently added products
       res.status(200).json(products);
     } else if (qCategory) {
       const product = await Product.find({
