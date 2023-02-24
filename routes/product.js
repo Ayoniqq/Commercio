@@ -66,7 +66,11 @@ router.get("/", verifyTokenAndAdmin, async (req, res) => {
       res.status(200).json(products);
     }
     elseif(qCategory) {
-      const product = await Product.find({categories: { $in: [qCategory]}}); //Fetch products according to Category
+      const product = await Product.find({
+        categories: { 
+          $in: [qCategory],
+          }
+          }); //Fetch products according to Category
     }
     res.status(200).json(users);
   } catch (err) {
