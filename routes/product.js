@@ -67,11 +67,13 @@ router.get("/", verifyTokenAndAdmin, async (req, res) => {
       products = await Product.find().sort({ createdAt: -1 }).limit(2); //fetch most recently added products
       res.status(200).json(products);
     } else if (qCategory) {
+      console.log(qCategory);
       const product = await Product.find({
         categories: {
           $in: [qCategory],
         },
       }); //Fetch products according to Category
+      res.status(200).json(product);
     } else {
       console.log("ALL PRODUCTS ARE DISPLAYED HERE");
       const products = await Product.find();
@@ -82,31 +84,5 @@ router.get("/", verifyTokenAndAdmin, async (req, res) => {
     res.status(500).json(err);
   }
 });
-
-// //GET USER STATS (Statistics showing when users visited the platform)
-// router.get("/stats", verifyTokenAndAdmin, async (req, res) => {
-//   const date = new Date();
-//   const lastYear = new Date(date.setFullYear(date.getFullYear() - 1)); //Last year data
-//   try {
-//     //Getting the month and the number of users that visited
-//     const data = await User.aggregate([
-//       { $match: { createdAt: { $gte: lastYear } } },
-//       {
-//         $project: {
-//           month: { $month: "$createdAt" },
-//         },
-//       },
-//       {
-//         $group: {
-//           _id: "$month",
-//           total: { $sum: 1 },
-//         },
-//       },
-//     ]);
-//     res.status(200).json(data);
-//   } catch (err) {
-//     res.status(500).json(err);
-//   }
-// });
 
 module.exports = router;
