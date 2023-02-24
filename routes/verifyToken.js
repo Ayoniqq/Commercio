@@ -32,7 +32,7 @@ const verifyTokenAndAdmin = (req, res, next) => {
   // if (req.user.isAdmin) {
   verifyToken(req, res, () => {
     if (req.user.isAdmin) {
-      console.log("YESSSSSS");
+      console.log("ADMIN");
       next();
     } else {
       res.status(401).json("Unauthorized access");

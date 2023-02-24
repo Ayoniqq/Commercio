@@ -45,7 +45,7 @@ router.delete("/:id", verifyTokenAndAuthorization, async (req, res) => {
   }
 });
 
-// //GET ONE User
+// //GET ONE Product
 router.get("/find/:id", async (req, res) => {
   //We omitted verifyTokenAndAdmin here because everyboy should be allowed to view products
   try {
@@ -61,8 +61,10 @@ router.get("/", verifyTokenAndAdmin, async (req, res) => {
   const qNew = req.query.new; //New Query
   const qCategory = req.query.category; //Selected Category
   try {
+    console.log("FETCHING");
     if (qNew) {
-      const products = await Product.find().sort({ createdAt: -1 }).limit(5); //fetch all products
+      console.log("NEW");
+      products = await Product.find().sort({ createdAt: -1 }).limit(2); //fetch all products
       res.status(200).json(products);
     } else if (qCategory) {
       const product = await Product.find({
@@ -71,9 +73,11 @@ router.get("/", verifyTokenAndAdmin, async (req, res) => {
         },
       }); //Fetch products according to Category
     } else {
+      console.log("ALL PRODUCTS ARE DISPLAYED HERE");
       const products = await Product.find();
+      res.status(200).json(products);
     }
-    res.status(200).json(users);
+    //res.status(200).json(users);
   } catch (err) {
     res.status(500).json(err);
   }
