@@ -62,15 +62,16 @@ router.get("/", verifyTokenAndAdmin, async (req, res) => {
   const qCategory = req.query.category; //Selected Category
   try {
     if (qNew) {
-      const products = await Product.find().sort({createdAt: -1}).limit(5); //fetch all products
+      const products = await Product.find().sort({ createdAt: -1 }).limit(5); //fetch all products
       res.status(200).json(products);
-    }
-    elseif(qCategory) {
+    } else if (qCategory) {
       const product = await Product.find({
-        categories: { 
+        categories: {
           $in: [qCategory],
-          }
-          }); //Fetch products according to Category
+        },
+      }); //Fetch products according to Category
+    } else {
+      const products = await Product.find();
     }
     res.status(200).json(users);
   } catch (err) {
