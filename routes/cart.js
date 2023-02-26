@@ -50,7 +50,7 @@ router.get("/find/:id", verifyTokenAndAuthorization, async (req, res) => {
   //We omitted verifyTokenAndAdmin here because everyboy should be allowed to view products
   try {
     const cart = await Cart.findOne({ id: req.params.id });
-    res.status(200).json(cart);
+    res.status(200).json(cart); //display cart
   } catch (err) {
     res.status(500).json(err);
   }
