@@ -45,7 +45,7 @@ router.delete("/:id", verifyTokenAndAuthorization, async (req, res) => {
   }
 });
 
-//GET ONE Product /* Note that its User id not Cart id */
+//GET ONE Cart /* Note that its User id not Cart id */
 router.get("/find/:id", verifyTokenAndAuthorization, async (req, res) => {
   //We omitted verifyTokenAndAdmin here because everyboy should be allowed to view products
   try {
