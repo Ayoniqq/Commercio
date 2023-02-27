@@ -47,7 +47,7 @@ router.delete("/:id", verifyTokenAndAuthorization, async (req, res) => {
 
 //GET ONE Cart /* Note that its User id not Cart id */
 router.get("/find/:id", verifyTokenAndAuthorization, async (req, res) => {
-  //We omitted verifyTokenAndAdmin here because everyboy should be allowed to view products
+  //We omitted verifyTokenAndAdmin here because everybody should be allowed to view products
   try {
     const cart = await Cart.findOne({ id: req.params.id });
     res.status(200).json(cart); //display cart
