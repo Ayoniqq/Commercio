@@ -57,32 +57,5 @@ router.get("/find/:id", verifyTokenAndAuthorization, async (req, res) => {
 });
 
 // // //GET ALL Cart
-// router.get("/", verifyTokenAndAdmin, async (req, res) => {
-//   const qNew = req.query.new; //New Query
-//   const qCategory = req.query.category; //Selected Category
-//   try {
-//     console.log("FETCHING")
-//     if (qNew) {
-//       console.log("NEW");
-//       products = await Cart.find().sort({ createdAt: -1 }).limit(2); //fetch most recently added products
-//       res.status(200).json(products);
-//     } else if (qCategory) {
-//       console.log(qCategory);
-//       const product = await Product.find({
-//         categories: {
-//           $in: [qCategory],
-//         },
-//       }); //Fetch products according to Category
-//       res.status(200).json(product);
-//     } else {
-//       console.log("ALL CART ARE DISPLAYED HERE");
-//       const cart = await Product.find();
-//       res.status(200).json(cart);
-//     }
-//     //res.status(200).json(users);
-//   } catch (err) {
-//     res.status(500).json(err);
-//   }
-// });
 
 module.exports = router;
