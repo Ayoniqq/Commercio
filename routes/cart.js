@@ -75,7 +75,7 @@ router.get("/find/:id", verifyTokenAndAuthorization, async (req, res) => {
 //       }); //Fetch products according to Category
 //       res.status(200).json(product);
 //     } else {
-//       console.log("ALL PRODUCTS ARE DISPLAYED HERE");
+//       console.log("ALL CART ARE DISPLAYED HERE");
 //       const products = await Product.find();
 //       res.status(200).json(cart);
 //     }
