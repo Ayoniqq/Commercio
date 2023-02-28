@@ -57,6 +57,13 @@ router.get("/find/:id", verifyTokenAndAuthorization, async (req, res) => {
 });
 
 // // //GET ALL Cart (ADMIN ONLY)
-router.get("/", verifyTokenAndAdmin, (req, res) => {});
+router.get("/", verifyTokenAndAdmin, (req, res) => {
+  try {
+    const carts = await Cart.find();
+  } 
+  catch (err) {
+
+  }
+});
 
 module.exports = router;
