@@ -64,7 +64,7 @@ router.get("/find/:id", verifyTokenAndAuthorization, async (req, res) => {
 //     console.log("FETCHING");
 //     if (qNew) {
 //       console.log("NEW");
-//       products = await Product.find().sort({ createdAt: -1 }).limit(2); //fetch most recently added products
+//       products = await Cart.find().sort({ createdAt: -1 }).limit(2); //fetch most recently added products
 //       res.status(200).json(products);
 //     } else if (qCategory) {
 //       console.log(qCategory);
