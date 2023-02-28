@@ -48,8 +48,8 @@ router.delete("/:id", verifyTokenAndAdmin, async (req, res) => {
 //GET USER ORDER (ADMIN ONLY)
 router.get("/find/:id", verifyTokenAndAdmin, async (req, res) => {
   try {
-    const cart = await Cart.findOne({ id: req.params.id });
-    res.status(200).json(cart); //display cart
+    const order = await Order.findOne({ id: req.params.id });
+    res.status(200).json(order); //display cart
   } catch (err) {
     res.status(500).json(err);
   }
