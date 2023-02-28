@@ -45,11 +45,11 @@ router.delete("/:id", verifyTokenAndAdmin, async (req, res) => {
   }
 });
 
-//GET USER ORDER (ADMIN ONLY)
+//GET USER ORDERS (ADMIN ONLY)
 router.get("/find/:id", verifyTokenAndAdmin, async (req, res) => {
   try {
-    const order = await Order.findOne({ id: req.params.id });
-    res.status(200).json(order); //display cart
+    const orders = await Order.findOne({ id: req.params.id }); //"orders because a user can have more than one order"
+    res.status(200).json(orders); //display cart
   } catch (err) {
     res.status(500).json(err);
   }
