@@ -45,9 +45,8 @@ router.delete("/:id", verifyTokenAndAdmin, async (req, res) => {
   }
 });
 
-//GET USER ORDER
-router.get("/find/:id", verifyTokenAndAuthorization, async (req, res) => {
-  //We omitted verifyTokenAndAdmin here because everybody should be allowed to view cart
+//GET USER ORDER (ADMIN ONLY)
+router.get("/find/:id", verifyTokenAndAdmin, async (req, res) => {
   try {
     const cart = await Cart.findOne({ id: req.params.id });
     res.status(200).json(cart); //display cart
