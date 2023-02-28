@@ -48,21 +48,23 @@ router.delete("/:id", verifyTokenAndAdmin, async (req, res) => {
 //GET USER ORDERS (ADMIN ONLY)
 router.get("/find/:id", verifyTokenAndAdmin, async (req, res) => {
   try {
-    const orders = await Order.findOne({ id: req.params.id }); //"orders because a user can have more than one order"
+    const orders = await Order.find({ id: req.params.id }); //"orders because a user can have more than one order"
     res.status(200).json(orders); //display cart
   } catch (err) {
     res.status(500).json(err);
   }
 });
 
-// // //GET ALL Cart (ADMIN ONLY)
+// // //GET ALL ORDERS (ADMIN ONLY)
 router.get("/", verifyTokenAndAdmin, async (req, res) => {
   try {
-    const carts = await Cart.find();
-    res.status(200).json(carts);
+    const order = await Order.find();
+    res.status(200).json(order);
   } catch (err) {
     res.status(500).json(err);
   }
 });
+
+router.get("/income", verifyTokenAndAdmin, (req, res) => {});
 
 module.exports = router;
