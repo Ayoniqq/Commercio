@@ -7,7 +7,7 @@ const {
   verifyTokenAndAdmin,
 } = require("./verifyToken");
 
-//CREATE ORDER
+//CREATE ORDER (USER)
 router.post("/", verifyToken, async (req, res) => {
   const newOrder = new Order(req.body);
 
@@ -19,23 +19,23 @@ router.post("/", verifyToken, async (req, res) => {
   }
 });
 
-//UPDATE USER INFO
-router.put("/cart/:id", verifyTokenAndAuthorization, async (req, res) => {
+//UPDATE ORDER (ADMIN ONLY)
+router.put("/cart/:id", verifyTokenAndAdmin, async (req, res) => {
   try {
     //Update User
-    const updatedCart = await Cart.findByIdAndUpdate(
+    const updatedOrder = await Order.findByIdAndUpdate(
       req.user.id,
       { $set: req.body },
       { new: true }
     );
-    updatedCart.save();
-    res.status(200).json(updatedCart);
+    updatedOrder.save();
+    res.status(200).json(updatedOrder);
   } catch (err) {
     res.status(500).json(err);
   }
 });
 
-// //Delete Cart
+// //Delete Order (ADMIN ONLY)
 router.delete("/:id", verifyTokenAndAuthorization, async (req, res) => {
   try {
     await Cart.findByIdAndDelete(req.params.id);
