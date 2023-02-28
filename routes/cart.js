@@ -76,7 +76,7 @@ router.get("/find/:id", verifyTokenAndAuthorization, async (req, res) => {
 //       res.status(200).json(product);
 //     } else {
 //       console.log("ALL CART ARE DISPLAYED HERE");
-//       const products = await Product.find();
+//       const cart = await Product.find();
 //       res.status(200).json(cart);
 //     }
 //     //res.status(200).json(users);
