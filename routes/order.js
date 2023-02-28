@@ -65,6 +65,10 @@ router.get("/", verifyTokenAndAdmin, async (req, res) => {
   }
 });
 
-router.get("/income", verifyTokenAndAdmin, (req, res) => {});
+router.get("/income", verifyTokenAndAdmin, (req, res) => {
+  const date = new Date();
+  const lastMonth = new Date(date.setMonth(date.getMonth) - 1);
+  const 
+});
 
 module.exports = router;
