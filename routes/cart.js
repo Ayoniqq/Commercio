@@ -77,7 +77,7 @@ router.get("/find/:id", verifyTokenAndAuthorization, async (req, res) => {
 //     } else {
 //       console.log("ALL PRODUCTS ARE DISPLAYED HERE");
 //       const products = await Product.find();
-//       res.status(200).json(products);
+//       res.status(200).json(cart);
 //     }
 //     //res.status(200).json(users);
 //   } catch (err) {
