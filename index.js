@@ -4,6 +4,8 @@ const dotenv = require("dotenv").config();
 const mongoose = require("mongoose");
 const db = require("./config/db");
 const PORT = process.env.PORT || 8080;
+
+//ROUTES
 const userRoute = require("./routes/user");
 const authRoute = require("./routes/auth");
 const productRoute = require("./routes/product");
