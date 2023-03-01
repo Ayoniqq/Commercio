@@ -18,5 +18,5 @@ app.use("/api/carts", cartRoute); //cartRoute
 app.use("/api/orders", orderRoute); //orderRoute
 
 app.listen(PORT, () => {
-  console.log(`LISTENING ON PORT: ${PORT}`); //LISTENING PORT
+  console.log(`LISTENING ON PORT: ${PORT}`);
 });
